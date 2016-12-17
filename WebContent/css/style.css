@@ -1,0 +1,516 @@
+/********************** MENU **********************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+	color: #000;
+	font-family: 'Open Sans', sans-serif;
+	margin:0px;
+	padding:0px;
+}
+
+a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
+a.link {
+	color: #FFF;
+}
+
+a.link:hover {
+	color: #0080c0;
+	cursor:pointer;
+}
+
+ol, ul {
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+#wrap {
+	margin: 0 auto;
+}
+
+.inner {
+	margin: 0px;
+	max-width: 940px;
+	padding:0px;
+}
+
+.relative {
+	position: relative;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+/* HEADER */
+#wrap > header {
+	margin-top:0px;
+	padding-bottom: 20px;
+}
+.logo {
+	display: inline-block;
+	font-size: 0;
+	padding-top:0px;
+}
+#navigation {
+	position: absolute;
+	right: 0px;
+	top: 19px;
+}
+
+#menu-toggle {
+	display: none;
+	float: right;
+}
+
+/* HEADER > MENU */
+#main-menu {
+	float: right;
+	font-size: 12px;
+	margin: 0px 0;
+}
+
+#main-menu > li {
+	display: inline-block;
+	margin-left: 20px;
+	padding: 2px 0;
+	text-align:left;
+}
+
+#main-menu > li.parent {
+	background-image: url(../images/plus-gray.png);
+	background-size: 7px 7px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#main-menu > li.parent > a {
+	padding-left: 14px;
+}
+
+#main-menu > li > a {
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 14px;
+	padding: 0px;
+	text-decoration:none;
+	text-align:left;
+}
+
+#main-menu > li:hover > a,
+#main-menu > li.current-menu-item > a {
+	color: #ffffff;
+}
+
+/* HEADER > MENU > DROPDOWN */
+#main-menu li {
+	position: relative;
+}
+
+ul.sub-menu { /* level 2 */
+	display: none;
+	left: 0px;
+	top: 18px;
+	padding-top: 10px;
+	position: absolute;
+	width:auto;
+	z-index: 9999;
+}
+
+ul.sub-menu ul.sub-menu { /* level 3+ */
+	margin-top: -1px;
+	padding-top: 0;
+	left: 149px;
+	top: 0px;
+}
+
+ul.sub-menu > li > a {
+	background-color: #004080;
+	border: 0px solid #0ff;
+	border-top: none;
+	color: #ffffff;
+	display: block;
+	font-size: 15px;
+	line-height: 17px;
+	padding: 10px 12px;
+}
+
+ul.sub-menu > li > a:hover {
+	background-color: #2a2a2a; 
+	color: #fff;
+}
+
+ul.sub-menu > li:first-child {
+	border-top: 5px solid #00a4ff;
+}
+
+ul.sub-menu ul.sub-menu > li:first-child {
+	border-top: 0px solid #444;
+}
+
+ul.sub-menu > li:last-child > a {
+	border-radius: 0 0 2px 2px;
+}
+
+ul.sub-menu > li > a.parent {
+	background-image: url(../images/arrow.png);
+	background-size: 5px 9px;
+	background-repeat: no-repeat;
+	background-position: 95% center;
+}
+
+#main-menu li:hover > ul.sub-menu {
+	display: inherit; /* show the submenu */
+}
+
+@media all and (max-width: 700px) {
+
+	#navigation {
+		position: static;
+		margin-top: 20px;
+	}
+
+	#menu-toggle {
+		display: block;
+	}
+
+	#main-menu {
+		display: none;
+		float: none;
+	}
+
+	#main-menu li {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+
+	#main-menu > li {
+		margin-top: -1px;
+	}
+
+	#main-menu > li:first-child {
+		margin-top: 0;
+	}
+
+	#main-menu > li > a {
+		background-color: #333;
+		border: 1px solid #444;
+		color: #bbb;
+		display: block;
+		font-size: 14px;
+		padding: 12px !important;
+		padding: 0;
+	}
+
+	#main-menu li > a:hover {
+		background-color: #ff0000; 
+	}
+
+	#main-menu > li.parent {
+		background: none !important;
+		padding: 0;
+	}
+
+	#main-menu > li:hover > a,
+	#main-menu > li.current-menu-item > a {
+		border: 1px solid #444 !important;
+		color: #fff !important;
+	}
+
+	ul.sub-menu {
+		display: block;
+		margin-top: -1px;
+		margin-left: 20px;
+		position: static;
+		padding: 0;
+		width: inherit;
+	}
+
+	ul.sub-menu > li:first-child {
+		border-top: 1px solid #444 !important;
+	}
+
+	ul.sub-menu > li > a.parent {
+		background: #333 !important;
+	}
+}
+/********************** FIN MENU **********************/  
+html {
+    backgorund-color: #999;
+	background: url(../images/bg_web_dgv_01.jpg) repeat-x top #999;
+}
+body {
+	font: 100%/1.4 "Open Sans", "open-sans", sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 0px;
+	padding-left: 0px;
+	/* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+	font-weight:normal;
+}
+
+
+/* ~~ this fixed width container surrounds all other elements ~~ */
+.container {
+	width: 960px;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+}
+
+/* ~~ This is the layout information. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+.content {
+padding: 0;
+}
+
+.page { 
+width:860px;
+background: #FFF; 
+padding: 50px 50px;
+}
+
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the overflow:hidden on the .container is removed */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.amarillo {
+	background-color:#0080c0;
+	display:block;
+	height: 10px;
+	width: 960px;
+}
+
+/*.txt_input {
+	font-family: "Open Sans", "open-sans", sans-serif;
+	text-align:left;
+	font-size: 16px;
+	color: #333;
+	margin-top: 25px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+	width: 350px;
+}*/
+/*.campo_form {
+	font-family: "Open Sans", "open-sans", sans-serif;
+	text-align:left;
+	font-size: 12px;
+	color: #333;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	display: block;
+	margin-left: 15px;
+	margin-top: 5px;
+}*/
+li {
+	display: inline-block;
+	line-height: 15px;
+}
+span {
+	font-family: "Open Sans", "open-sans", sans-serif;
+	text-align:left;	
+}
+
+
+.tabla {
+display:block; background-color: #9CF; margin-bottom: 15px; padding-top:10px;}
+
+/*EStilo Formularios grises y naranja*/
+
+.form-style-2{
+    max-width: 860px;
+	margin-bottom: 25px;
+
+}
+
+.form-style-2 label{
+	display:block;
+	margin-bottom: 20px;
+	width: 200px;
+	font-size:14px;
+	float: left;
+	text-align:right;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+.form-style-2 .label-corto {
+	display:block;
+	margin-bottom: 20px;
+	width:150px;
+	font-size:14px;
+	float: left;
+	text-align:right;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+
+.form-style-2 span.required{
+    color:red;
+}
+.form-style-2 .tel-number-field{
+    width: 40px;
+}
+.form-style-2 input.input-field{
+    width: 600px;
+	margin-bottom: 20px;
+
+}
+.form-style-2 input.input-field-corto{
+    width: 200px;
+	margin-bottom: 20px;
+
+}
+
+
+.form-style-2 input.input-field, 
+.form-style-2 .tel-number-field, 
+.form-style-2 .textarea-field, 
+ .form-style-2 .select-field {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    -moz-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+}
+ .corto {
+    margin-bottom:10px;
+    width:425px;
+}
+
+fieldset {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    -moz-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+     margin-top: 15px;
+     margin-bottom: 15px;
+}
+
+.form-style-2 .input-radio-field {
+	text-align:left;
+	display:block;
+	float:left;
+	margin-right:25px;
+	padding-top:5px;
+	padding-left:5px;
+	width: 100px;
+}
+.form-style-2 .input-radio-field-misma {
+	margin-right:25px;
+	padding-top:7px;
+	width: 50px;
+	display:block;
+	float:left;
+text-align:left;
+}
+
+.form-style-2 .input-field:focus, 
+.form-style-2 .tel-number-field:focus, 
+.form-style-2 .textarea-field:focus,  
+.form-style-2 .select-field:focus{
+    border: 1px solid #0080c0;
+}
+.form-style-2 .textarea-field{
+    height:100px;
+
+}
+.form-style-2 .input-trae {
+	border:none;
+	background: #FFF;
+	width: 425px;
+	margin-bottom:20px;
+	padding-top:7px;
+	display:inline-block;
+	height:auto;
+}
+
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]{
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #0080c0;
+    color: #ffffff;
+    box-shadow: 1px 1px 4px #DADADA;
+    -moz-box-shadow: 1px 1px 4px #DADADA;
+    -webkit-box-shadow: 0px 0px 0px #DADADA;
+    border-radius: 4px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+}
+
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{
+    background: #0080ff;
+    color: #fff;
+
+}
+
+
+/* Fin de EStilo Formularios grises y naranja*/
+.btn_centrado {
+	width:100%; text-align:center; 
+	margin:20px;
+}
+.btn_centrado input {
+	cursor: pointer;
+}
+input.time {
+    width: 80px;
+}
+.label-li {
+text-align:left;
+margin-bottom:10px;
+}
