@@ -69,8 +69,8 @@ public class Sistema {
 	
 	
 	/* Actualizar Base de datos - Toma los datos del archivo c:/CPA/Excel/surveymonkey.csv y actualiza la base de datos del sistema */
-	public void actualizarSolicitudes(){
-		ControladorArchivos.getInstancia().importarCSV_SM();
+	public int actualizarSolicitudes(){
+		return ControladorArchivos.getInstancia().importarCSV_SM();
 	}
 	
 	
@@ -78,21 +78,25 @@ public class Sistema {
 	 * Si la solicitud ya paso el proceso de busqueda no lo repite. 
 	 */
 	
-	public void buscarCPASolicitudes() throws Exception{
+	public int buscarCPASolicitudes() throws Exception{
+		
+		int encontradas = 0;
 		
 		//Traigo las solicitudes desde la BD
 		solicitudes = this.getSolicitudes();
 		
-		//Recorro, busco CPA y actualizo la BD
+		//Recorro, busco CPA y actualizo la BD, devuelve la cantidad de encontrados
 		for (Solicitud solicitud : solicitudes) {
 			if(solicitud.getCpa().equals("")){
-				solicitud.setCpa(ControladorCP.getInstancia().getCPA(solicitud));
-				DAOSolicitud.getInstancia().guardarSolicitud(solicitud);
+				if(!ControladorCP.getInstancia().getCPA(solicitud).equals("SIN CPA")){
+					solicitud.setCpa(ControladorCP.getInstancia().getCPA(solicitud));
+					DAOSolicitud.getInstancia().guardarSolicitud(solicitud);
+					encontradas++;
+				}
 			}
 		}
 		
-		//Imprimo los resultados
-		System.out.println("CPA Buscados");
+		return encontradas;
 
 	}
 	

@@ -31,7 +31,9 @@ public class ControladorArchivos {
 		return instancia;
 	}
 	
-	public void importarCSV_SM() {
+	public int importarCSV_SM() {
+		int contador = 0;
+		
 		try {
 						
 			CsvReader solicitudes_import = new CsvReader("C:/CPA/Excel/SurveyMonkey.csv");
@@ -76,17 +78,19 @@ public class ControladorArchivos {
 				if(idInt>=3300 && DAOSolicitud.getInstancia().getSolicitud(idInt)==null){				
 					Solicitud aux = new Solicitud(Integer.valueOf(id), calle, alturaInt, cpInt, localidad, provincia);
 					DAOSolicitud.getInstancia().guardarSolicitud(aux);
+					contador++;
 				}
 			}
 			
 			solicitudes_import.close();
-			System.out.println("Solicitudes importadas correctamente");
-			
+			//System.out.println("Solicitudes importadas correctamente desde: C:/CPA/Excel/SurveyMonkey.csv");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return contador;
 	}
 	
 	public boolean importarCSV(String nombreArchivo) {
