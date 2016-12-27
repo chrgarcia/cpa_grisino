@@ -38,17 +38,28 @@ import javax.swing.table.TableColumn;
 import java.awt.ScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import java.awt.Canvas;
+import java.awt.Label;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.JSeparator;
+import java.awt.Window.Type;
+import javax.swing.JMenuItem;
+import javax.swing.JInternalFrame;
+import java.awt.Panel;
+import javax.swing.JEditorPane;
+import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
+import javax.swing.ScrollPaneConstants;
 
 public class inicio {
 
-	private JFrame frame;
+	private JFrame frmBusquedaDeCpa;
 	private JTextField cp;
 	private JTable table;
 	private JTextField barrio;
 	private JTextField calle;
 	private JTextField altura;
-	private JTextField localidad;
-	private JTextField provincia;
 	private JTable table_1;
 	private JScrollPane scrollPane;
 	private DefaultTableModel modelo;
@@ -59,7 +70,7 @@ public class inicio {
 			public void run() {
 				try {
 					inicio window = new inicio();
-					window.frame.setVisible(true);
+					window.frmBusquedaDeCpa.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -74,91 +85,84 @@ public class inicio {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1128, 522);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBusquedaDeCpa = new JFrame();
+		frmBusquedaDeCpa.setType(Type.UTILITY);
+		frmBusquedaDeCpa.setForeground(SystemColor.activeCaption);
+		frmBusquedaDeCpa.setTitle("Busqueda de CPA GRISINO");
+		frmBusquedaDeCpa.setBounds(100, 100, 1200, 600);
+		frmBusquedaDeCpa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		
 		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
+		frmBusquedaDeCpa.setJMenuBar(menuBar);
 		
 		JMenu mnInicio = new JMenu("Inicio");
 		menuBar.add(mnInicio);
 		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnInicio.add(mntmSalir);
+		
 		//Sistema s = new Sistema();
 
-				frame.getContentPane().setLayout(null);
+				frmBusquedaDeCpa.getContentPane().setLayout(null);
 				
 				cp = new JTextField();
-				cp.setBounds(46, 8, 86, 19);
-				frame.getContentPane().add(cp);
+				cp.setBounds(39, 30, 70, 19);
+				frmBusquedaDeCpa.getContentPane().add(cp);
 				cp.setColumns(10);
 				
 				
-				JLabel label = new JLabel("CP");
-				label.setBounds(17, 10, 19, 16);
-				frame.getContentPane().add(label);
+				JLabel lblCp = new JLabel("CP:");
+				lblCp.setFont(new Font("Arial", Font.PLAIN, 11));
+				lblCp.setBounds(10, 31, 30, 16);
+				frmBusquedaDeCpa.getContentPane().add(lblCp);
 				
-				JLabel lblCalle = new JLabel("Calle");
+				JLabel lblCalle = new JLabel("Calle:");
+				lblCalle.setFont(new Font("Arial", Font.PLAIN, 11));
 				lblCalle.setHorizontalAlignment(SwingConstants.CENTER);
-				lblCalle.setBounds(126, 13, 47, 14);
-				frame.getContentPane().add(lblCalle);
+				lblCalle.setBounds(110, 33, 47, 14);
+				frmBusquedaDeCpa.getContentPane().add(lblCalle);
 				
 				table = new JTable();
 				table.setBounds(65, 167, 1, 1);
-				frame.getContentPane().add(table);
+				frmBusquedaDeCpa.getContentPane().add(table);
 				
-				JLabel lblBarrio = new JLabel("Barrio");
+				JLabel lblBarrio = new JLabel("Barrio: ");
+				lblBarrio.setFont(new Font("Arial", Font.PLAIN, 11));
 				lblBarrio.setHorizontalAlignment(SwingConstants.CENTER);
-				lblBarrio.setBounds(10, 71, 38, 14);
-				frame.getContentPane().add(lblBarrio);
+				lblBarrio.setBounds(119, 87, 63, 14);
+				frmBusquedaDeCpa.getContentPane().add(lblBarrio);
 				
 				barrio = new JTextField();
-				barrio.setBounds(46, 68, 253, 20);
-				frame.getContentPane().add(barrio);
+				barrio.setBounds(180, 84, 253, 20);
+				frmBusquedaDeCpa.getContentPane().add(barrio);
 				barrio.setColumns(10);
 				
 				calle = new JTextField();
 				calle.setColumns(10);
-				calle.setBounds(167, 10, 279, 20);
-				frame.getContentPane().add(calle);
+				calle.setBounds(153, 29, 303, 20);
+				frmBusquedaDeCpa.getContentPane().add(calle);
 				
-				JLabel lblAltura = new JLabel("Altura");
+				JLabel lblAltura = new JLabel("Altura: ");
+				lblAltura.setFont(new Font("Arial", Font.PLAIN, 11));
 				lblAltura.setHorizontalAlignment(SwingConstants.CENTER);
-				lblAltura.setBounds(456, 13, 47, 14);
-				frame.getContentPane().add(lblAltura);
+				lblAltura.setBounds(466, 32, 47, 14);
+				frmBusquedaDeCpa.getContentPane().add(lblAltura);
 				
 				altura = new JTextField();
 				altura.setColumns(10);
-				altura.setBounds(504, 10, 84, 20);
-				frame.getContentPane().add(altura);
-				
-				JLabel lblLoc = new JLabel("Loc");
-				lblLoc.setHorizontalAlignment(SwingConstants.CENTER);
-				lblLoc.setBounds(10, 39, 35, 14);
-				frame.getContentPane().add(lblLoc);
-				
-				localidad = new JTextField();
-				localidad.setColumns(10);
-				localidad.setBounds(46, 36, 253, 20);
-				frame.getContentPane().add(localidad);
-				
-				JLabel lblProv = new JLabel("Prov.");
-				lblProv.setHorizontalAlignment(SwingConstants.CENTER);
-				lblProv.setBounds(309, 38, 35, 14);
-				frame.getContentPane().add(lblProv);
-				
-				provincia = new JTextField();
-				provincia.setColumns(10);
-				provincia.setBounds(354, 36, 234, 20);
-				frame.getContentPane().add(provincia);
+				altura.setBounds(516, 29, 63, 20);
+				frmBusquedaDeCpa.getContentPane().add(altura);
 				
 				scrollPane = new JScrollPane();
-				scrollPane.setBounds(10, 101, 1092, 315);
-				frame.getContentPane().add(scrollPane);
+				scrollPane.setBounds(10, 111, 1164, 418);
+				frmBusquedaDeCpa.getContentPane().add(scrollPane);
 
 				table_2 = new JTable();
 				scrollPane.setViewportView(table_2);
@@ -194,9 +198,7 @@ public class inicio {
 	
 						List<Object[]> listado = Sistema.getInstancia().getCPAGui(Integer.valueOf(cp.getText()), String.valueOf(calle.getText()), Integer.valueOf(altura.getText()));
 						
-						
 						//System.out.println(listado);
-						
 						for(int i=0; i<listado.size();i++){
 
 							Object[] fila = new Object[9];
@@ -222,16 +224,17 @@ public class inicio {
 					}
 				});
 				btnBuscar.setBackground(Color.LIGHT_GRAY);
-				btnBuscar.setBounds(517, 67, 165, 23);
-				frame.getContentPane().add(btnBuscar);
+				btnBuscar.setBounds(587, 28, 165, 23);
+				frmBusquedaDeCpa.getContentPane().add(btnBuscar);
 				
-				JButton btnX = new JButton("X");
+				JButton btnX = new JButton("Borrar Resultados");
 				btnX.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
 						cp.setText("");
 						calle.setText("");
 						altura.setText("");
+						barrio.setText("");
 						
 						while (modelo.getRowCount() > 0) modelo.removeRow(0);
 						
@@ -240,8 +243,8 @@ public class inicio {
 				
 				btnX.setForeground(Color.BLACK);
 				btnX.setBackground(Color.LIGHT_GRAY);
-				btnX.setBounds(692, 67, 58, 23);
-				frame.getContentPane().add(btnX);
+				btnX.setBounds(762, 3, 156, 101);
+				frmBusquedaDeCpa.getContentPane().add(btnX);
 				
 				JButton btnBarrio = new JButton("Buscar Barrio");
 				btnBarrio.addActionListener(new ActionListener() {
@@ -276,8 +279,24 @@ public class inicio {
 				});
 				btnBarrio.setForeground(Color.BLACK);
 				btnBarrio.setBackground(Color.LIGHT_GRAY);
-				btnBarrio.setBounds(309, 67, 165, 23);
-				frame.getContentPane().add(btnBarrio);
+				btnBarrio.setBounds(443, 83, 165, 23);
+				frmBusquedaDeCpa.getContentPane().add(btnBarrio);
+				
+				Label label = new Label("Busqueda de CPA por calle");
+				label.setForeground(SystemColor.text);
+				label.setAlignment(Label.CENTER);
+				label.setBackground(SystemColor.activeCaption);
+				label.setFont(new Font("Arial", Font.PLAIN, 14));
+				label.setBounds(7, 3, 745, 22);
+				frmBusquedaDeCpa.getContentPane().add(label);
+				
+				Label label_1 = new Label("Busqueda por barrios");
+				label_1.setForeground(SystemColor.text);
+				label_1.setFont(new Font("Arial", Font.PLAIN, 14));
+				label_1.setBackground(SystemColor.activeCaption);
+				label_1.setAlignment(Label.CENTER);
+				label_1.setBounds(7, 55, 745, 22);
+				frmBusquedaDeCpa.getContentPane().add(label_1);
 
 				
 
@@ -313,25 +332,4 @@ public class inicio {
 			tableColumn.setPreferredWidth( preferredWidth + 25 );
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
